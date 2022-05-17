@@ -23,8 +23,34 @@
     <input type="file" id="archivo2">
     <h4>contenido del archivo</h4>
     <pre id="tablares"></pre>
+
+
+
+
+    <h2>exportar texto a un archivo</h2>
+    <p>escribe para exportar</p>
+    <input type="text" id="texto-archivo">
+    <button id="exportar">exportar</button>
     <script>
-    
+        
+    function exportar(data, fileName){
+        //para crear un elemento enlace
+        const a = document.createElement("a");
+        //para crear el archivo
+        const contenido = data,
+        blob = new Blob([contenido], {type: "octet/stream"}),
+        url = window.URL.createObjectURL(blob);
+        a.href = url;
+        //para descargarlo
+        a.download = fileName;
+        a.click();
+        window.URL.revokeObjectURL(url);
+    }    
+    document.querySelector('#exportar').onclick = function(){
+        const data = document.querySelector('#texto-archivo').value;
+        const nombreArchivo = "ejemplo.csv";
+        exportar(data, nombreArchivo);
+    }
     
     
     
