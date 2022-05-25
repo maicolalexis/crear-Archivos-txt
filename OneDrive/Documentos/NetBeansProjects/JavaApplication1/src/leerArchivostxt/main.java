@@ -11,9 +11,12 @@ package leerArchivostxt;
  */
 public class main {
     public static void main(String[] args) {
-        operaciones operaciones = new operaciones();
+        leerArchivo op = new leerArchivo();
+        media me = new media();
         
-        System.out.println(operaciones.LeerText("C:\\import\\leer.txt"));
+       op.LeerText("C:\\import\\leer.txt");
+        
+        
     }
     
 }

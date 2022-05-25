@@ -12,10 +12,24 @@ import java.io.FileReader;
  *
  * @author maico
  */
-public class operaciones {
-
-    public String LeerText(String direccion){
+public class leerArchivo extends media{
+    
+        String[] array = null;
         String texto = "";
+        double suma = 0.0;
+
+    public leerArchivo() {
+    }
+        
+        
+        
+
+    public void LeerText(String direccion){
+        
+        
+        
+        
+        
         try {
             //BufferedReader es una clase de Java para leer el texto de una secuencia de entrada (como un archivo)
             
@@ -25,16 +39,25 @@ public class operaciones {
             //bread toma el balor de bf.readLine que es método que  lee todos los caracteres
             while((bread = bf.readLine()) != null){
                 //haga el siclo mientras bread contenga datos
-                temp = temp + bread;//hemos guardado el texto del archivo
+               array = bread.split(",");//hemos guardado el texto del archivo
                 
             }
-            texto = temp;
+            
+            mediaPromedio(suma, array);
+             
+            
+            
+                
+            //suma /= array.length;
+           
+            
+           
             
             
         } catch (Exception e) {
             System.err.println("no se encontro archivos");
         }
-        return texto;
+        
     }
     public static void main(String[] args) {
         
