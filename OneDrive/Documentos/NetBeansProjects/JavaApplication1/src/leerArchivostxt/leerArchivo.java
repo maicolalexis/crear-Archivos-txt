@@ -60,6 +60,7 @@ public class leerArchivo extends opListas{
             
             listar();
             media();
+            var();
             
            
             

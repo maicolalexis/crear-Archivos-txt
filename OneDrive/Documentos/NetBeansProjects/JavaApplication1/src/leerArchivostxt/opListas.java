@@ -5,18 +5,14 @@
  */
 package leerArchivostxt;
 
-
-
-
-
 /**
  *
  * @author maico
  */
-public class opListas{
-    
+public class opListas {
+
     int sum, media = 0;
-    double sum2, media2, sumatoria, varianza, desviacion, redondeo= 0;
+    double sum2, media2, varianza,varianza2, desviacion, redondeo = 0;
     // Puntero que indica el inicio de la lista o conocida tambien como 
     //cabeza de la lista.
     private Nodo inicio;
@@ -46,17 +42,11 @@ public class opListas{
         // Define un nuevo nodo.
 
         // Agrega al valor al nodo.
-        
-            
-            Nodo nuevo = new Nodo(); 
-            nuevo.setValor(num);
-            
-            nuevo.setValor2(val);
-            
-            
-        
-        
-        
+        Nodo nuevo = new Nodo();
+        nuevo.setValor(num);
+
+        nuevo.setValor2(val);
+
         // Consulta si la lista esta vacia.
         if (esVacia()) {
             // Inicializa la lista agregando como inicio al nuevo nodo.
@@ -75,7 +65,7 @@ public class opListas{
         }
         // Incrementa el contador de tamaño de la lista
         tamanio++;
-        
+
     }
 
     public void listar() {
@@ -87,47 +77,79 @@ public class opListas{
             int i = 0;
             // Recorre la lista hasta el final.
             while (aux != null) {
-                System.out.print( "[ "+ i + ". " + aux.getValor() + " " + " - ");
+                System.out.print("[ " + i + ". " + aux.getValor() + " " + " - ");
                 // Imprime en pantalla el valor del nodo.
-                System.out.println( i + ". " +aux.getValor2() + " ]");
+                System.out.println(i + ". " + aux.getValor2() + " ]");
                 // Avanza al siguiente nodo.
                 aux = aux.getSiguiente();
                 // Incrementa el contador de la posión.
                 i++;
             }
         }
-        
+
     }
-    public void media(){
-         if (!esVacia()) {
+
+    public void media() {
+        
+        double sumatoria = 0;
+        if (!esVacia()) {
             // Crea una copia de la lista.
             Nodo aux = inicio;
             // Posicion de los elementos de la lista.
-           
+
             // Recorre la lista hasta el final.
             while (aux != null) {
                 sum = sum + aux.getValor();
                 media = sum / getTamanio();
                 sum2 = sum2 + aux.getValor2();
                 media2 = sum2 / getTamanio();
-                sumatoria = Math.pow(sum - media, 2);
-                varianza = varianza + sumatoria;
-                varianza = varianza / (aux.getValor()-1);
-                desviacion = Math.sqrt(varianza);
-                redondeo = Math.rint(desviacion*100)/100;
-                
-                
                 aux = aux.getSiguiente();
-                
-                
+                //--------------------------------------------------------------
+
             }
-             System.out.println("la media de la columna 1 es " + media);
-             System.out.println("la media de la columna 2 es " + media2);
-             System.out.println(redondeo);
         }
-    
+        
+
+        int var = getTamanio() - 1;
+
+        varianza = sumatoria / var;
+        desviacion = Math.sqrt(varianza);
+        System.out.println("<-------------------------->");
+        System.out.println("la media de la columna 1 es " + media);
+        System.out.println("la media de la columna 2 es " + media2);
+        
+
     }
-    
 
+    public void var() {
+        double sumatoria = 0;
+        double sumatoria2 = 0;
+        if (!esVacia()) {
+            // Crea una copia de la lista.
+            Nodo aux = inicio;
+            // Posicion de los elementos de la lista.
 
+            // Recorre la lista hasta el final.
+            while (aux != null) {
+                sumatoria += (Math.pow((aux.getValor() - media), 2));
+                sumatoria2 += (Math.pow((aux.getValor2()- media2), 2));
+                aux = aux.getSiguiente();
+
+            }
+            
+        }
+        
+        int var = getTamanio()-1;
+        
+        
+        double op2 = sumatoria2/var;
+        double op = sumatoria/var;
+        
+        varianza2 = Math.sqrt(op2);
+        varianza = Math.sqrt(op);
+        
+        System.out.println("la varianza de la columna 1 es " + varianza);
+        System.out.println("la varianza de la columna 2 es " + varianza2);
+
+    }
 }
