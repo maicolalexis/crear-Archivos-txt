@@ -5,16 +5,27 @@
  */
 package leerArchivostxt;
 
+
+
+
 /**
  *
  * @author maico
  */
 public class main {
     public static void main(String[] args) {
-        leerArchivo op = new leerArchivo();
-        media me = new media();
         
-       op.LeerText("C:\\import\\leer.txt");
+        
+        leerArchivo op = new leerArchivo();
+        System.out.println("<<-- Lista -->>");
+        op.LeerText("C:\\import\\leer.txt");
+        
+        
+        
+        
+        
+            
+
         
         
     }

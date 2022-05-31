@@ -12,19 +12,20 @@ import java.io.FileReader;
  *
  * @author maico
  */
-public class leerArchivo extends media{
-    
-        String[] array = null;
+public class leerArchivo extends opListas{
+        String[] array;
+        String[] array2 ;
         String texto = "";
-        double suma = 0.0;
-
+        double columna2;
+        int numero;
+        int arrays;
     public leerArchivo() {
     }
         
         
         
 
-    public void LeerText(String direccion){
+    public String[] LeerText(String direccion){
         
         
         
@@ -36,31 +37,48 @@ public class leerArchivo extends media{
             BufferedReader bf = new BufferedReader(new FileReader(direccion));
             String temp = "";
             String bread;
-            //bread toma el balor de bf.readLine que es método que  lee todos los caracteres
+            //bread toma el valor de bf.readLine que es método que  lee todos los caracteres
             while((bread = bf.readLine()) != null){
                 //haga el siclo mientras bread contenga datos
-               array = bread.split(",");//hemos guardado el texto del archivo
+                
+                array = bread.split(",");//hemos guardado el texto del archivo
+                   
+               for (int i = 0; i < array.length; i++) {
+                numero = Integer.parseInt(array[0]);
+                columna2 = Double.parseDouble(array[1]);  
+                
+               
                 
             }
-            
-            mediaPromedio(suma, array);
-             
-            
-            
+               
+              agregarAlFinal(numero, columna2);
                 
-            //suma /= array.length;
-           
+               
+            }
+            
+            
+            
+            listar();
+            media();
             
            
             
+         
+        
+        
+        
+
+   
+            
+      
             
         } catch (Exception e) {
             System.err.println("no se encontro archivos");
         }
         
-    }
-    public static void main(String[] args) {
-        
+          
+         return array;   
+            
         
     }
     
